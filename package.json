@@ -1,12 +1,11 @@
 {
   "name": "ez-table-mailer",
   "version": "0.0.1",
-  "description": "",
+  "description": "A mailer microservice for ez-table app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard"
   },
-  "description": "A mailer microservice for ez-table app",
   "repository": {
     "url": "git+https://github.com/VzqzAc/ez-table-mailer.git",
     "type": "git"
@@ -18,7 +17,11 @@
   },
   "homepage": "https://github.com/VzqzAc/ez-table-mailer#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "nodemailer": "^2.6.4"
+  },
+  "devDependencies": {
+    "standard": "^8.5.0"
   }
 }
