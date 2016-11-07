@@ -6,14 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "description": "A mailer microservice for ez-table app",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VzqzAc/ez-table-mailer.git"
+    "url": "git+https://github.com/VzqzAc/ez-table-mailer.git",
+    "type": "git"
   },
   "author": "ONDECODE",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/VzqzAc/ez-table-mailer/issues"
   },
-  "homepage": "https://github.com/VzqzAc/ez-table-mailer#readme"
+  "homepage": "https://github.com/VzqzAc/ez-table-mailer#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "nodemailer": "^2.6.4"
+  }
 }
