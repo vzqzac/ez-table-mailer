@@ -4,7 +4,8 @@
   "description": "A mailer microservice for ez-table app",
   "main": "index.js",
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "start": "node index.js"
   },
   "repository": {
     "url": "git+https://github.com/VzqzAc/ez-table-mailer.git",
