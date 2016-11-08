@@ -1,28 +1,32 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const mailer = require('./mailer/sender')
+const mailSender = require('./mailer/sender')
+const mailConstructor = require('./mailer/constructor')
+
 let router = express.Router()
-let mailOptions = {}
 let port = process.env.PORT || 3000
+let mailOptions = {}
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 router.post('/send', function (req, res) {
-  console.log('wut')
+  let data = {}
   mailOptions.to = req.query.receiver
-  mailer.createMail(mailOptions, function (error, success) {
-    if (error) res.send('error')
-    mailOptions = success
-    mailer.sendMail(mailOptions)
-    res.send('success')
+  mailConstructor.createMail(mailOptions, function (error, mailCreated) {
+    if (error) {
+      res.send(error.message)
+    } else {
+      mailSender.sendMail(mailCreated, function (error, mailSentInfo) {
+        error ? res.send(error.message) : res.send(mailSentInfo)
+      })
+    }
   })
 })
 
 app.use('/mailer', router)
 
-app.listen(port, function(error) {
+app.listen(port, function (error) {
   if (error) throw new Error(error)
-  console.log('listen at port: ' + port)
 })
