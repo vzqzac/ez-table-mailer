@@ -13,6 +13,12 @@ let mailOptions = {}
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+router.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  next()
+})
+
 router.post('/send-invitation', function (req, res) {
   mailOptions.to = req.query.receiver
   mailConstructor.createMail(mailOptions, function (error, mailCreated) {
