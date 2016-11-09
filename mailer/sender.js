@@ -15,8 +15,6 @@ let transporter = mailer.createTransport(smtpConfig)
 
 module.exports = {
   sendMail: function (mailCreated, callback) {
-    transporter.sendMail(mailCreated, function (error, info) {
-      error ? callback(error) : callback(null, info)
-    })
+    transporter.sendMail(mailCreated).then(info => callback(null, info)).catch(err => callback(err))
   }
 }

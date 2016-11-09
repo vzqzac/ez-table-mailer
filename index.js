@@ -14,7 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 router.post('/send-invitation', function (req, res) {
-  let data = {}
   mailOptions.to = req.query.receiver
   mailConstructor.createMail(mailOptions, function (error, mailCreated) {
     if (error) {
