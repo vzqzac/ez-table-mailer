@@ -6,11 +6,11 @@ let mailOptions = {}
 
 module.exports = {
   createMail: function (initialMailBody, callback) {
-    !initialMailBody.to.email
-      ? callback({reason: new Error('No email specified'), status: 400})
-      : !initialMailBody.to.name
-      ? callback({reason: new Error('No name specified'), status: 400})
-      : ''
+    if (!initialMailBody.to) return callback(new Error('No receiver'))
+    if (typeof initialMailBody.to === 'object') {
+      initialMailBody.bcc = initialMailBody.to
+      delete initialMailBody.to
+    }
     mailOptions = initialMailBody
     mailOptions.from = config.name + ' ' + '<' + config.email + '>'
     mailOptions.subject = 'Your invitation to join ez-table!'
