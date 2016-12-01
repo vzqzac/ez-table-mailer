@@ -14,7 +14,8 @@ module.exports = {
     mailOptions = initialMailBody
     mailOptions.from = config.name + ' ' + '<' + config.email + '>'
     mailOptions.subject = 'Your invitation to join ez-table!'
+
     mailOptions.html = "<a href='https://ez-table.com/join/" + extras.token + '/' + initialMailBody.bcc + "'>join</a><br>p: " + extras.pswd
-    callback(null, mailOptions)
+    return callback(null, mailOptions)
   }
 }
