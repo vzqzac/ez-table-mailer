@@ -5,7 +5,7 @@ const path = require('path')
 let mailOptions = {}
 
 module.exports = {
-  createMail: function (initialMailBody, callback) {
+  createMail: function (initialMailBody, extras, callback) {
     if (!initialMailBody.to) return callback(new Error('No receiver'))
     if (typeof initialMailBody.to === 'object') {
       initialMailBody.bcc = initialMailBody.to
@@ -14,7 +14,7 @@ module.exports = {
     mailOptions = initialMailBody
     mailOptions.from = config.name + ' ' + '<' + config.email + '>'
     mailOptions.subject = 'Your invitation to join ez-table!'
-    mailOptions.html = fs.readFileSync(path.join(__dirname, 'emailTemplates', 'invitation.html'), 'utf8')
+    mailOptions.html = "<a href='https://ez-table.com/join/" + extras.token + '/' + initialMailBody.bcc + "'>join</a><br>p: " + extras.pswd
     callback(null, mailOptions)
   }
 }
