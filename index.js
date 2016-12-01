@@ -24,6 +24,7 @@ router.post('/send-invitation', function (req, res) {
   mailOptions.to = req.body.email
   extras.token = req.body.token
   extras.pswd = req.body.pswd
+  extras.email = req.body.email
   mailConstructor.createMail(mailOptions, extras, function (error, mailCreated) {
     if (error) {
       res.send(error.message)
