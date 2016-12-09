@@ -12,7 +12,7 @@ module.exports = function (app) {
 
   app.use('/ez-table', ezTable)
 
-  // app.all('/', function (req, res) {
-  //   res.status(404).send('Not found')
-  // })
+  app.all('/', function (req, res) {
+    res.status(404).send('Not found')
+  })
 }
