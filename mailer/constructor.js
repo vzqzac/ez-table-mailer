@@ -30,7 +30,7 @@ module.exports = {
     mailOptions = {}
     commonMail(initialMailBody, config.name + ' shared a table with you!')
     mailOptions.attachments = [
-      {filename: extras.tableName + '.' + extras.extension, path: 'https://raw.githubusercontent.com/VzqzAc/twgitbot/master/.gitignore'}
+      {filename: extras.tableName + '.' + extras.extension, path: 'https://s3-us-west-2.amazonaws.com/ez-table/' + extras.tableName}
     ]
     mailOptions.html = "Test attachment"
     return callback(null, mailOptions)
