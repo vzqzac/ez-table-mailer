@@ -28,7 +28,8 @@ module.exports = {
 
   shareTableMail: function (initialMailBody, extras, callback) {
     mailOptions = {}
-    commonMail(initialMailBody, config.name + ' shared a table with you!')
+    commonMail(initialMailBody, config.name + ' shared ' + extras.tableName + 'table with you!')
+    // path must be changed in the future
     mailOptions.attachments = [
       {filename: extras.tableName + '.' + extras.extension, path: 'https://s3-us-west-2.amazonaws.com/ez-table/' + extras.tableName}
     ]

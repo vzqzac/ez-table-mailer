@@ -1,6 +1,6 @@
 {
   "name": "ez-table-mailer",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A mailer microservice for ez-table app",
   "main": "index.js",
   "scripts": {
