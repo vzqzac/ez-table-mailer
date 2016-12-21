@@ -21,8 +21,11 @@ module.exports = {
   invitationMail: function (initialMailBody, extras, callback) {
     mailOptions = {}
     commonMail(initialMailBody, 'Your invitation to join ez-table!')
-
+   if (Object.keys(extras).length) {
     mailOptions.html = "<a href='https://ez-table.com/#/join/" + extras.token + '/' + extras.email + "'>join</a><br>p: " + extras.pswd
+  } else {
+    mailOptions.html = "<a href='https://ez-table.com/#/'>New table</a>"
+  }
     return callback(null, mailOptions)
   },
 

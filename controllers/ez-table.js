@@ -16,9 +16,11 @@ module.exports = {
     let extras = {}
     if (!req.body.email) return res.send('No receiver')
     mailOptions.to = req.body.email
-    extras.token = req.body.token
-    extras.pswd = req.body.pswd
-    extras.email = req.body.email
+    if(!req.query.exists) {
+      extras.token = req.body.token
+      extras.pswd = req.body.pswd
+      extras.email = req.body.email
+    }
 
     mailConstructor.invitationMail(mailOptions, extras, function (error, mailCreated) {
       afterCreate(error, mailCreated, function (result) {
