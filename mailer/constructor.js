@@ -38,5 +38,17 @@ module.exports = {
     ]
     mailOptions.html = "Test attachment"
     return callback(null, mailOptions)
+  },
+
+  infoMail: function (initialMailBody, extras, callback) {
+    mailOptions = {}
+    commonMail(initialMailBody, (extras.name ? extras.name : 'Somebody') + ' wants to contact ONDECODE')
+    mailOptions.html =
+      '<div> What ' + (extras.name ? extras.name : 'somebody') +
+      ' said: ' + (extras.message ? extras.message : 'Nothing -.-') +
+      '<br>The email: ' + (extras.email ? extras.email : 'Not provided pff') +
+      "<br>Provided a phone? Let's see: " + (extras.phone ? extras.phone : 'No') +
+      '</div>'
+    return callback(null, mailOptions)
   }
 }
