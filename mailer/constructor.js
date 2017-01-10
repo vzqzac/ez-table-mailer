@@ -22,9 +22,11 @@ module.exports = {
     mailOptions = {}
     commonMail(initialMailBody, 'Your invitation to join ez-table!')
    if (Object.keys(extras).length) {
-    mailOptions.html = "<a href='https://ez-table.com/#/join/" + extras.token + '/' + extras.email + "'>join</a><br>p: " + extras.pswd
+    mailOptions.html = "<a href='https://ez-table.com/#/join/" + extras.token + '/' + extras.email +
+     "'>join</a><br>Please enter with your email and this password: " + extras.pswd +
+     "<br>And change it once you enter"
   } else {
-    mailOptions.html = "<a href='https://ez-table.com/#/'>New table</a>"
+    mailOptions.html = "<a href='https://ez-table.com/#/'>Join</a>"
   }
     return callback(null, mailOptions)
   },
@@ -36,7 +38,7 @@ module.exports = {
     mailOptions.attachments = [
       {filename: extras.tableName + '.' + extras.extension, path: 'https://s3-us-west-2.amazonaws.com/ez-table/' + extras.tableName}
     ]
-    mailOptions.html = "Test attachment"
+    mailOptions.html = "The table file is attached, you can download it by clicking it"
     return callback(null, mailOptions)
   },
 
