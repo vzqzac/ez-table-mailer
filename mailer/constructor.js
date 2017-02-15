@@ -52,5 +52,13 @@ module.exports = {
       "<br>Provided a phone? Let's see: " + (extras.phone ? extras.phone : 'No') +
       '</div>'
     return callback(null, mailOptions)
+  },
+
+  newInvitationMail: function (receiver, token) {
+    mailOptions = { to: receiver }
+    mailOptions.from = ['Invitaciones inlete', '<', config.email, '>'].join('')
+    mailOptions.subject = 'Tu invitación para ingresar a inlete!'
+    mailOptions.html = `<div> Has sido invitado a formar parte de Inlete! </div><br><p> Abre el siguiente enlace y podrás hacer uso de la plataforma: <a href="http://inlete.com/join/${token}">Ingresa a Inlete</a></p>`
+    return mailOptions
   }
 }

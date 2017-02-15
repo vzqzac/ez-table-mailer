@@ -14,7 +14,11 @@ const smtpConfig = {
 let transporter = mailer.createTransport(smtpConfig)
 
 module.exports = {
-  sendMail: function (mailCreated, callback) {
-    transporter.sendMail(mailCreated).then(info => callback(null, info)).catch(err => callback(err))
+  sendMail: function (mailCreated) {
+    return new Promise(function (resolve, reject) {
+      transporter.sendMail(mailCreated)
+        .then(resolve)
+        .catch(reject)
+      })
   }
 }
